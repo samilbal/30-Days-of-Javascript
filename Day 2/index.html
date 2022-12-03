@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 2</title>
+  </head>
+  <body>
+    <script>
+      let challenge = "30 Days of JavaScript";
+      console.log(challenge);
+      console.log(challenge.length);
+
+      let upperCase = challenge.toUpperCase();
+      console.log(upperCase);
+
+      let lowerCase = challenge.toLowerCase();
+      console.log(lowerCase);
+
+      let substr = challenge.substr(0, 2);
+      console.log(substr);
+
+      let subString = challenge.substring(0, 3);
+      console.log(subString);
+
+      let sliced = challenge.slice(3, challenge.length);
+      console.log(sliced);
+
+      let word = "Script";
+      console.log(challenge.includes(word));
+
+      let challengeArray = challenge.split("");
+      console.log(challengeArray);
+
+      let companies = "Facebook, Google, Microsoft, Apple, IBM, Oracle, Amazon";
+      let companiesArray = companies.split(", ");
+      console.log(companiesArray);
+
+      let python = challenge.replace("JavaScript", "Python");
+      console.log(python);
+
+      console.log(challenge.charAt(15));
+
+      let jIndex = challenge.indexOf("J");
+      console.log(challenge.charCodeAt(jIndex));
+
+      console.log(challenge.indexOf("a"));
+      console.log(challenge.lastIndexOf("a"));
+
+      let sentence =
+        "   You cannot end a sentence with because because because is a conjunction  ";
+
+      let iBecause = sentence.indexOf("because");
+      console.log(iBecause);
+
+      let lastIBecause = console.log(sentence.lastIndexOf("because"));
+
+      let sBecause = console.log(sentence.search("because"));
+
+      console.log(sentence);
+      console.log(sentence.trim(" "));
+
+      console.log(challenge.startsWith("3"));
+      console.log(challenge.endsWith("t"));
+
+      console.log(challenge.match(/a/g));
+
+      let s1 = "30 Days of";
+      let s2 = "JavaScript ";
+
+      let s1S2 = s1.concat(" ", s2);
+      console.log(s1S2);
+
+      console.log(s1S2.repeat(2));
+    </script>
+  </body>
+</html>
