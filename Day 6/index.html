@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 6</title>
+  </head>
+  <body>
+    <script>
+      for (let i = 0; i < 11; i++) {
+        console.log(i);
+      }
+
+      let x = 0;
+      while (x < 11) {
+        console.log(x);
+        x++;
+      }
+
+      let y = 0;
+      do {
+        console.log(y);
+        y++;
+      } while (y < 11);
+
+      let t = " ";
+      for (let index = 0; index < 7; index++) {
+        t += "#";
+        console.log(t);
+      }
+
+      for (let index = 0; index < 11; index++) {
+        console.log(index, "x", index, "=", index * index);
+      }
+
+      for (let index = 0; index < 11; index++) {
+        console.log(
+          index,
+          "    ",
+          index * index,
+          "     ",
+          index * index * index
+        );
+      }
+
+      for (let index = 0; index < 101; index++) {
+        if (index % 2 == 0) {
+          console.log(index);
+        }
+      }
+      for (let index = 0; index < 101; index++) {
+        if (index % 2 == 1) {
+          console.log(index);
+        }
+      }
+
+      let sum = 0;
+      for (let index = 0; index < 101; index++) {
+        sum += index;
+      }
+      console.log(sum);
+
+      let randomNums = [],
+        rIndex = 0;
+
+      while (rIndex < 5) {
+        let randomNum = Math.floor(Math.random(100) * 10);
+        randomNums.push(randomNum);
+        console.log(randomNums);
+        rIndex++;
+      }
+
+      rIndex = 0;
+      let randomNums2 = [];
+      while (rIndex < 5) {
+        let randomNum = Math.floor(Math.random(100) * 10);
+        if (!randomNums2.includes(randomNum)) {
+          randomNums2.push(randomNum);
+          console.log(randomNums2);
+        } else {
+          continue;
+        }
+        rIndex++;
+      }
+      console.log(randomNums2);
+
+      let id = Math.random().toString(36).substring(6);
+      console.log(id);
+
+      const countries = [
+        "Albania",
+        "Bolivia",
+        "Canada",
+        "Denmark",
+        "Ethiopia",
+        "Finland",
+        "Germany",
+        "Hungary",
+        "Ireland",
+        "Japan",
+        "Kenya",
+      ];
+
+      let previousHigh = "";
+
+      for (let index = 0; index < countries.length; index++) {
+        const country = countries[index];
+        country.length > previousHigh.length
+          ? (previousHigh = country)
+          : previousHigh;
+      }
+      console.log(previousHigh);
+    </script>
+  </body>
+</html>
