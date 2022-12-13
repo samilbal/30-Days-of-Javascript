@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 7</title>
+  </head>
+  <body>
+    <script>
+      const getFullName = (name, surname) => {
+        // let name = "Şamil";
+        // let surname = "BAL";
+        let fullName = name + surname;
+        return `My name is ${fullName}`;
+      };
+
+      const addNumbers = (a, b) => {
+        let sum = a + b;
+        return sum;
+      };
+
+      const areaOfRectangle = (length, width) => {
+        let area = length * width;
+        return area;
+      };
+
+      const bmi = (weight, height) => {
+        let bmiIndex = weight / (height * height);
+        if (bmiIndex < 18.5) {
+          return "underweight";
+        } else if (bmiIndex < 24.9) {
+          return "normal weight";
+        } else if (bmiIndex < 29.9) {
+          return "overweight";
+        } else return "obese";
+      };
+
+      const sum = (...params) => {
+        let sumAll = 0;
+        for (const param of params) {
+          sumAll += param;
+        }
+        return sumAll;
+      };
+    </script>
+  </body>
+</html>
