@@ -18,6 +18,110 @@
         },
       };
       dog.breed = "kangal";
+
+      const users = {
+        Asab: {
+          email: "asab@asab.com",
+          skills: [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Redux",
+            "MongoDB",
+            "Express",
+            "React",
+            "Node",
+          ],
+          age: 25,
+          isLoggedIn: false,
+          points: 50,
+        },
+        Alex: {
+          email: "alex@alex.com",
+          skills: ["HTML", "CSS", "JavaScript"],
+          age: 20,
+          isLoggedIn: false,
+          points: 30,
+        },
+        Brook: {
+          email: "daniel@daniel.com",
+          skills: ["HTML", "CSS", "JavaScript", "React", "Redux"],
+          age: 30,
+          isLoggedIn: true,
+          points: 50,
+        },
+        Daniel: {
+          email: "daniel@alex.com",
+          skills: ["HTML", "CSS", "JavaScript", "Python"],
+          age: 20,
+          isLoggedIn: false,
+          points: 40,
+        },
+        John: {
+          email: "john@john.com",
+          skills: ["HTML", "CSS", "JavaScript", "React", "Redux", "Node.js"],
+          age: 20,
+          isLoggedIn: true,
+          points: 50,
+        },
+        Thomas: {
+          email: "thomas@thomas.com",
+          skills: ["HTML", "CSS", "JavaScript", "React"],
+          age: 20,
+          isLoggedIn: false,
+          points: 40,
+        },
+        Paul: {
+          email: "paul@paul.com",
+          skills: [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "MongoDB",
+            "Express",
+            "React",
+            "Node",
+          ],
+          age: 20,
+          isLoggedIn: false,
+          points: 40,
+        },
+      };
+      let findManySkills = () => {
+        let people = Object.keys(users);
+        people.forEach((person) =>
+          users[person].skills.length > 4
+            ? console.log("oaoa", users[person])
+            : console.log("none")
+        );
+      };
+      console.log("breakbreakbreakbreak");
+      findManySkills();
+
+      let lastHigh = 0;
+      let numberOf50 = 0;
+      let findHighPoint = () => {
+        for (let y in users) {
+          let x = users[y];
+          if (x.points >= lastHigh) {
+            console.log(x);
+            lastHigh = x.points;
+            numberOf50 += 1;
+          }
+        }
+        console.log("Highest score:", lastHigh);
+        console.log("number of ", lastHigh, "is :", numberOf50);
+      };
+      findHighPoint();
+
+      function setName() {
+        users.samil = {
+          email: "msb@gmail.com",
+        };
+        console.log(users.name);
+        console.log(users);
+      }
+      setName();
     </script>
   </body>
 </html>
