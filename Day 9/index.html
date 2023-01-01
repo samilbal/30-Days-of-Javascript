@@ -7,6 +7,7 @@
     <title>Day 9</title>
   </head>
   <body>
+    <script src="countries.js"></script>
     <script>
       const countries = ["Finland", "Sweden", "Denmark", "Norway", "IceLand"];
       const names = ["Asabeneh", "Mathias", "Elias", "Brook"];
@@ -97,6 +98,58 @@
           0
         )
       );
+
+      countries2.sort((a, b) => {
+        if (a.name > b.name) return 1;
+        if (a.name < b.name) return -1;
+        return 0;
+      });
+
+      let languagesArray = [];
+
+      countries2.map((x) => {
+        let chk = x.languages;
+        chk.forEach((element) => {
+          if (languagesArray[element]) {
+            console.log("language exists in the array");
+          } else {
+            languagesArray.push(element);
+          }
+        });
+      });
+
+      let languageCount = {};
+
+      languagesArray.map((language) => {
+        let key = language;
+        languageCount[language]
+          ? (languageCount[key] = languageCount[key] + 1)
+          : (languageCount[key] = 1);
+      });
+
+      function getKeysWithHighestValue(o, n) {
+        var keys = Object.keys(o);
+        keys.sort(function (a, b) {
+          return o[b] - o[a];
+        });
+        return keys.slice(0, n);
+      }
+
+      console.log(
+        "most spoken 10 languages",
+        getKeysWithHighestValue(languageCount, 10)
+      );
+
+      function mostPopulatedCountries(object, n) {
+        let tenCountries = countries2.sort(function (a, b) {
+          if (a.population > b.population) return -1;
+          if (a.population < b.population) return +1;
+          return 0;
+        });
+
+        console.log("top ten populated countries", tenCountries.splice(0, n));
+      }
+      mostPopulatedCountries(countries2, 10);
     </script>
   </body>
 </html>
