@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 10</title>
+  </head>
+  <body>
+    <script src="countries.js"></script>
+    <script>
+      const a = [4, 5, 8, 9];
+      const b = [3, 4, 5, 7];
+      const countries = ["Finland", "Sweden", "Norway", "England", "Turkey"];
+
+      let newSet = new Set();
+
+      for (let i = 0; i < 11; i++) {
+        newSet.add(i);
+      }
+      console.log(newSet);
+
+      newSet.delete(4);
+      console.log(newSet);
+
+      newSet.clear();
+      console.log(newSet);
+
+      for (const country of countries) {
+        newSet.add(country);
+      }
+      console.log(newSet);
+
+      let newMap = new Map();
+
+      for (const country of countries) {
+        newMap.set(country, country.length);
+      }
+
+      console.log(newMap);
+
+      let c = [...a, ...b];
+
+      let C = new Set(c);
+
+      console.log(C);
+
+      let B = new Set(b);
+      let intersect = a.filter((n) => B.has(n));
+      let Intersect = new Set(intersect);
+      console.log(Intersect);
+
+      let difference = a.filter((n) => !B.has(n));
+      let Difference = new Set(difference);
+      console.log(Difference);
+
+      let languagesArr = [];
+
+      countries2.map((country) => {
+        let currentLanguages = country.languages;
+        currentLanguages.forEach((language) => {
+          languagesArr[language]
+            ? console.log("language exists in array")
+            : languagesArr.push(language);
+        });
+      });
+      console.log(languagesArr);
+
+      let languagesSet = new Set(languagesArr);
+      console.log(
+        "in total there are: ",
+        languagesSet.size,
+        "languages in the countries object file"
+      );
+
+      let counts = [];
+      let count = {};
+
+      for (const l of languagesSet) {
+        let filteredLang = languagesArr.filter((lng) => lng === l);
+        counts.push({ lang: l, count: filteredLang.length });
+      }
+      console.log(counts);
+
+      let countsSort = counts.sort((x, y) => {
+        if (x.count > y.count) return -1;
+        if (x.count < y.count) return +1;
+        return 0;
+      });
+
+      console.log(countsSort.slice(0, 10));
+    </script>
+  </body>
+</html>
