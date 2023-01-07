@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 12</title>
+  </head>
+  <body>
+    <script>
+      class Animal {
+        constructor(name, age, color, legs, properties) {
+          this.name = name;
+          this.age = age;
+          this.color = color;
+          this.legs = legs;
+          this.properties = properties;
+        }
+        getName() {
+          return this.name;
+        }
+        getAge() {
+          return this.age;
+        }
+        getColor() {
+          return this.color;
+        }
+
+        getFullInfo() {
+          let name = this.getName();
+          let age = this.getAge();
+          let color = this.getColor();
+          let fullInfo = `This ${name} is ${age} years old. It is ${color} and it is ${this.properties}`;
+          return fullInfo;
+        }
+      }
+
+      let dog = new Animal("dog", "21", "black", "4", "aggressive");
+      let cat = new Animal("cat", "11", "gray", "4", "always hungry");
+
+      class Bird extends Animal {
+        constructor(name, age, color, legs, properties, canFly) {
+          super(name, age, color, legs, properties);
+          this.canFly = canFly;
+        }
+        getColor() {
+          return `The color of this animal is ${this.color}`;
+        }
+      }
+
+      let eagle = new Bird("eagle", "4", "black/white", "2", "very aggressive");
+
+      //Statistics calculating program
+
+      class Statistics {
+        constructor(arr) {
+          this.data = arr;
+        }
+        count() {
+          return this.data.length;
+        }
+        sum() {
+          let sum = this.data.reduce((counter, a) => counter + a, 0);
+          return sum;
+        }
+        min() {
+          return Math.min(...this.data);
+        }
+        max() {
+          return Math.max(...this.data);
+        }
+        range() {
+          return this.max() - this.min();
+        }
+        mean() {
+          return Math.ceil(this.sum() / this.count());
+        }
+        median() {
+          let sortedData = this.data.sort();
+          return sortedData[Math.floor(this.count() / 2)];
+        }
+        mode() {
+          let mode = {};
+          let max = 0,
+            count = 0;
+
+          for (let i = 0; i < this.data.length; i++) {
+            const item = this.data[i];
+
+            if (mode[item]) {
+              mode[item]++;
+            } else {
+              mode[item] = 1;
+            }
+
+            if (count < mode[item]) {
+              max = item;
+              count = mode[item];
+            }
+          }
+          return `mode: ${max}, count: ${count}`;
+        }
+        variance() {
+          let variance;
+          let varArr = [];
+          this.data.forEach((item) => {
+            varArr.push(Math.pow(item - this.mean(), 2));
+          });
+          let varSum = varArr.reduce((counter, a) => counter + a, 0);
+          variance = varSum / this.count();
+          return variance;
+        }
+        std() {
+          return Math.sqrt(this.variance());
+        }
+        describe() {
+          let stats = `
+            Count: ${this.count()}
+            Sum: ${this.sum()}
+            Min: ${this.min()}
+            Max: ${this.max()}
+            Range: ${this.range()}
+            Mean: ${this.mean()}
+            Median: ${this.median()}
+            Mode: ${this.mode()}
+            Variance: ${this.variance()}
+            Standard Deviation: ${this.std()}`;
+          console.log(stats);
+        }
+      }
+      let ages = new Statistics([
+        31, 26, 34, 37, 27, 26, 32, 32, 26, 27, 27, 24, 32, 33, 27, 25, 26, 38,
+        37, 31, 34, 24, 33, 29, 26,
+      ]);
+
+      //Person Account class
+
+      class PersonAccount {
+        constructor(firstName, lastName, incomes, expenses) {
+          this.firstName = firstName;
+          this.lastName = lastName;
+          this.incomes = incomes;
+          this.expenses = expenses;
+        }
+        totalIncome() {
+          let total = 0;
+
+          for (const key in this.incomes) {
+            if (this.incomes.hasOwnProperty(key)) {
+              const element = this.incomes[key];
+              total += element;
+            }
+          }
+          return total;
+        }
+        totalExpense() {
+          let total = 0;
+
+          for (const key in this.expenses) {
+            if (this.expenses.hasOwnProperty(key)) {
+              const element = this.expenses[key];
+              total += element;
+            }
+          }
+          return total;
+        }
+        accountInfo() {
+          let fullName = this.firstName + this.lastName;
+          return `The account : ${fullName} has a total income of: ${this.totalIncome()} and a total expense of: ${this.totalExpense()} `;
+        }
+
+        addIncome(income) {
+          this.incomes += income;
+          return;
+        }
+        addExpense(expense) {
+          this.expenses += expense;
+        }
+        accountBalance() {
+          return this.totalIncome() - this.totalExpense();
+        }
+      }
+
+      let joes = new PersonAccount(
+        "Joey",
+        "Tribbiani",
+        { crypto: 192, house: 15, phones: 4, salary: 5000 },
+        {
+          icecream: 15,
+          donuts: 55,
+        }
+      );
+    </script>
+  </body>
+</html>
