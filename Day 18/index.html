@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 18</title>
+  </head>
+  <body>
+    <script>
+      const countriesAPI = "https://restcountries.com/v2/all";
+      const catsAPI = "https://api.thecatapi.com/v1/breeds";
+
+      //   let url = countriesAPI;
+      //   fetch(url)
+      //     .then((response) => response.json())
+      //     .then((data) => {
+      //       for (const country in data) {
+      //         if (Object.hasOwnProperty.call(data, country)) {
+      //           const element = data[country];
+      //           console.log(
+      //             "Country:",
+      //             element.name,
+      //             ",   Capital:",
+      //             element.capital,
+      //             ",   Languages:",
+      //             element.languages,
+      //             ",   Population:",
+      //             element.population,
+      //             ",   Area:",
+      //             element.area
+      //           );
+      //         }
+      //       }
+      //     });
+
+      //   url = catsAPI;
+      //   fetch(url)
+      //     .then((response) => response.json())
+      //     .then((data) => {
+      //       let catNames = JSON.stringify(data, ["name"], 2);
+      //       console.log("catNames:", catNames);
+
+      //       for (const cat in data) {
+      //         if (Object.hasOwnProperty.call(data, cat)) {
+      //           const element = data[cat];
+      //           let metricHyp = element.weight.metric;
+
+      //           let metricNoHyp = metricHyp.replace("-", "");
+      //           console.log(metricNoHyp);
+
+      //           let metric = metricNoHyp.trim();
+
+      //           let num1 = metric.charAt(0);
+      //           let num2 = metric.slice(-1);
+
+      //           console.log(
+      //             "Average weight of :",
+      //             element.name,
+      //             "  is :",
+      //             (+num1 + +num2) / 2,
+      //             "kgs"
+      //           );
+      //         }
+      //       }
+      //     });
+
+      url = countriesAPI;
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+
+          //   //create an empty array to hold countries and areas
+          //   let countriesArray = [];
+
+          //   //create an object to hold countryName-countryArea pairs
+          //   let countryArea = {};
+
+          //   //loop through the data from the API
+          //   for (const country in data) {
+          //     if (Object.hasOwnProperty.call(data, country)) {
+          //       const element = data[country];
+          //       //put the name-area pairs into the empty object
+          //       countryArea[element.name] = element.area;
+          //     }
+          //   }
+
+          //   //loop through the previously empty name-area holding object
+          //   for (const k in countryArea) {
+          //     if (Object.hasOwnProperty.call(countryArea, k)) {
+          //       const element = countryArea[k];
+          //       //push the pairs into the empty array in order to be sorted
+          //       countriesArray.push({ key: k, value: countryArea[k] });
+          //     }
+          //   }
+
+          //   //sort the array depending on the values(areas)
+          //   countriesArray.sort(function (a, b) {
+          //     return b.value - a.value;
+          //   });
+
+          //   //get the top 10 areas and print them
+          //   let firstTen = countriesArray.slice(0, 10);
+          //   console.log("top ten countries depending on area: ", firstTen);
+        });
+    </script>
+  </body>
+</html>
