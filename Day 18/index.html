@@ -11,98 +11,117 @@
       const countriesAPI = "https://restcountries.com/v2/all";
       const catsAPI = "https://api.thecatapi.com/v1/breeds";
 
-      //   let url = countriesAPI;
-      //   fetch(url)
-      //     .then((response) => response.json())
-      //     .then((data) => {
-      //       for (const country in data) {
-      //         if (Object.hasOwnProperty.call(data, country)) {
-      //           const element = data[country];
-      //           console.log(
-      //             "Country:",
-      //             element.name,
-      //             ",   Capital:",
-      //             element.capital,
-      //             ",   Languages:",
-      //             element.languages,
-      //             ",   Population:",
-      //             element.population,
-      //             ",   Area:",
-      //             element.area
-      //           );
-      //         }
-      //       }
-      //     });
+      let url = countriesAPI;
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          for (const country in data) {
+            if (Object.hasOwnProperty.call(data, country)) {
+              const element = data[country];
+              console.log(
+                "Country:",
+                element.name,
+                ",   Capital:",
+                element.capital,
+                ",   Languages:",
+                element.languages,
+                ",   Population:",
+                element.population,
+                ",   Area:",
+                element.area
+              );
+            }
+          }
+        });
 
-      //   url = catsAPI;
-      //   fetch(url)
-      //     .then((response) => response.json())
-      //     .then((data) => {
-      //       let catNames = JSON.stringify(data, ["name"], 2);
-      //       console.log("catNames:", catNames);
+      url = catsAPI;
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          let catNames = JSON.stringify(data, ["name"], 1);
+          console.log("catNames:", catNames);
 
-      //       for (const cat in data) {
-      //         if (Object.hasOwnProperty.call(data, cat)) {
-      //           const element = data[cat];
-      //           let metricHyp = element.weight.metric;
+          for (const cat in data) {
+            if (Object.hasOwnProperty.call(data, cat)) {
+              const element = data[cat];
+              let metricHyp = element.weight.metric;
 
-      //           let metricNoHyp = metricHyp.replace("-", "");
-      //           console.log(metricNoHyp);
+              let metricNoHyp = metricHyp.replace("-", "");
+              console.log(metricNoHyp);
 
-      //           let metric = metricNoHyp.trim();
+              let metric = metricNoHyp.trim();
 
-      //           let num1 = metric.charAt(0);
-      //           let num2 = metric.slice(-1);
+              let num1 = metric.charAt(0);
+              let num2 = metric.slice(-1);
 
-      //           console.log(
-      //             "Average weight of :",
-      //             element.name,
-      //             "  is :",
-      //             (+num1 + +num2) / 2,
-      //             "kgs"
-      //           );
-      //         }
-      //       }
-      //     });
+              console.log(
+                "Average weight of :",
+                element.name,
+                "  is :",
+                (+num1 + +num2) / 2,
+                "kgs"
+              );
+            }
+          }
+        });
 
       url = countriesAPI;
       fetch(url)
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
+          //create an empty array to hold countries and areas
+          let countriesArray = [];
 
-          //   //create an empty array to hold countries and areas
-          //   let countriesArray = [];
+          //create an object to hold countryName-countryArea pairs
+          let countryArea = {};
 
-          //   //create an object to hold countryName-countryArea pairs
-          //   let countryArea = {};
+          //loop through the data from the API
+          for (const country in data) {
+            if (Object.hasOwnProperty.call(data, country)) {
+              const element = data[country];
+              //put the name-area pairs into the empty object
+              countryArea[element.name] = element.area;
+            }
+          }
 
-          //   //loop through the data from the API
-          //   for (const country in data) {
-          //     if (Object.hasOwnProperty.call(data, country)) {
-          //       const element = data[country];
-          //       //put the name-area pairs into the empty object
-          //       countryArea[element.name] = element.area;
-          //     }
-          //   }
+          //loop through the previously empty name-area holding object
+          for (const k in countryArea) {
+            if (Object.hasOwnProperty.call(countryArea, k)) {
+              const element = countryArea[k];
+              //push the pairs into the empty array in order to be sorted
+              countriesArray.push({ key: k, value: countryArea[k] });
+            }
+          }
 
-          //   //loop through the previously empty name-area holding object
-          //   for (const k in countryArea) {
-          //     if (Object.hasOwnProperty.call(countryArea, k)) {
-          //       const element = countryArea[k];
-          //       //push the pairs into the empty array in order to be sorted
-          //       countriesArray.push({ key: k, value: countryArea[k] });
-          //     }
-          //   }
+          //sort the array depending on the values(areas)
+          countriesArray.sort(function (a, b) {
+            return b.value - a.value;
+          });
 
-          //   //sort the array depending on the values(areas)
-          //   countriesArray.sort(function (a, b) {
-          //     return b.value - a.value;
-          //   });
+          //get the top 10 areas and print them
+          let firstTen = countriesArray.slice(0, 10);
+          console.log("top ten countries depending on area: ", firstTen);
 
-          //   //get the top 10 areas and print them
-          //   let firstTen = countriesArray.slice(0, 10);
-          //   console.log("top ten countries depending on area: ", firstTen);
+          //top 10 languages
+
+          let tenLang = [];
+
+          data.forEach((element) => {
+            tenLang.push(element.languages);
+          });
+
+          let newArr = [];
+          tenLang.forEach((element) => {
+            element.forEach((arrObj) => newArr.push(arrObj));
+          });
+
+          let newArrStr = newArr.map(JSON.stringify);
+
+          let unique = new Set(newArrStr);
+          let uniqueArr = Array.from(unique).map(JSON.parse);
+
+          let languagesAll = uniqueArr.map((element) => element.name);
+          console.log("All languages spoken:", languagesAll);
         });
     </script>
   </body>

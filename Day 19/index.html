@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 19</title>
+  </head>
+  <body>
+    <script>
+      function personAccount() {
+        let firstName = "Samil";
+        let lastName = "Bal";
+        let incomes = { rent: 0, sales: 10, books: 25 };
+        let expenses = { food: 10, bills: 15, car: 3 };
+
+        function totalIncome() {
+          return Object.values(incomes).reduce((a, b) => a + b, 0);
+        }
+
+        function totalExpenses() {
+          return Object.values(expenses).reduce((a, b) => a + b, 0);
+        }
+        function accountInfo() {
+          let infoText = `This account belongs to ${
+            firstName + lastName
+          } and : Total Income: ${totalIncome()}  Total Expenses:  ${totalExpenses()}  `;
+          return infoText;
+        }
+        return {
+          totalIncome: totalIncome(),
+          totalExpenses: totalExpenses(),
+          accountInfo: accountInfo(),
+        };
+      }
+      const pAcc = personAccount();
+    </script>
+  </body>
+</html>
