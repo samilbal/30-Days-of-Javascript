@@ -8,9 +8,9 @@
   </head>
   <body>
     <div class="wrapper">
-      <h1>Asabeneh Yetayeh challenges in</h1>
-      <span>2020</span>
+      <h1>Asabeneh Yetayeh challenges in <span id="year">2020</span></h1>
       <h1 id="time"></h1>
+      <div id="txt"></div>
       <h2>30DaysOfJavaScript Challenge</h2>
       <ul>
         <li class="done">30DaysOfPython Challenge Done</li>
@@ -23,6 +23,52 @@
       </ul>
     </div>
 
-    <script></script>
+    <script>
+      const done = document.querySelector(".done");
+      const ongoing = document.querySelector(".ongoing");
+      const coming = document.querySelectorAll(".coming");
+
+      done.style.backgroundColor = "green";
+
+      ongoing.style.backgroundColor = "yellow";
+
+      coming.forEach((element) => {
+        console.log(element);
+        element.style.backgroundColor = "red";
+      });
+
+      function startTime() {
+        const today = new Date();
+        let h = today.getHours();
+        let m = today.getMinutes();
+        let s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById("txt").innerHTML = h + ":" + m + ":" + s;
+        setTimeout(startTime, 1000);
+      }
+      const setBg = () => {
+        const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+        document.getElementById(`txt`).style.backgroundColor =
+          "#" + randomColor;
+        setTimeout(setBg, 1000);
+      };
+      const setYearBg = () => {
+        const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+        document.getElementById(`year`).style.backgroundColor =
+          "#" + randomColor;
+        setTimeout(setYearBg, 2000);
+      };
+
+      function checkTime(i) {
+        if (i < 10) {
+          i = "0" + i;
+        } // add zero in front of numbers < 10
+        return i;
+      }
+      startTime();
+      setBg();
+      setYearBg();
+    </script>
   </body>
 </html>
