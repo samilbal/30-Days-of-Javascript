@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Day 23</title>
+  </head>
+  <body>
+    <h1 class="title">Number Generator</h1>
+
+    <input type="text" id="number" />
+    <button>Generate</button>
+
+    <div class="boxes"></div>
+    <script>
+      const number = document.querySelector("#number");
+      const btn = document.querySelector("button");
+      const boxes = document.querySelector(".boxes");
+
+      btn.addEventListener("click", (e) => {
+        boxes.innerHTML = "";
+        for (let i = 1; i < number.value; i++) {
+          let box = document.createElement("div");
+          box.classList.add("box");
+
+          const isPrime = (num) => {
+            for (let i = 2, s = Math.sqrt(num); i <= s; i++) {
+              if (num % i === 0) return false;
+            }
+            return num > 1;
+          };
+
+          if (isPrime(i) == true) {
+            box.classList.add("red");
+          } else if (i % 2 === 0) {
+            box.classList.add("green");
+          } else {
+            box.classList.add("yellow");
+          }
+
+          box.innerHTML = i;
+          boxes.appendChild(box);
+        }
+      });
+    </script>
+  </body>
+</html>

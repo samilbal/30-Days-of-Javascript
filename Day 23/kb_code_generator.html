@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Keyboard Code Generator</title>
+    <link rel="stylesheet" href="keystyle.css" />
+  </head>
+  <body>
+    <div id="container">
+      <h1>Keycode Generator</h1>
+      <h2 id="keyName">Press Any Key</h2>
+      <h3 id="keyCode"></h3>
+    </div>
+
+    <script>
+      const keyName = document.getElementById("keyName");
+      const keyCode = document.getElementById("keyCode");
+
+      document.body.addEventListener("keypress", (e) => {
+        console.log(e);
+        keyName.innerText = `You Pressed : ${e.key.toUpperCase()} Key`;
+        keyCode.innerText = `Keycode for The Key is : ${e.keyCode}`;
+      });
+    </script>
+  </body>
+</html>

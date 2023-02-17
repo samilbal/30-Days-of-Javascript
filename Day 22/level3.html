@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 22 Level 3</title>
+  </head>
+  <body style="margin-left: 8rem; margin-right: 8rem; text-align: center">
+    <div class="wrapper"></div>
+
+    <script src="data.js"></script>
+    <script>
+      //get wrapper
+      const wrp = document.querySelector(".wrapper");
+
+      // create title add year span and append them to the wrapper
+      const title =
+        "<div id='title'> Asabaneh Yetayeh challenges in <span id ='year'>2020</span></div>";
+      wrp.appendChild(document.createElement("div")).innerHTML = title;
+
+      // create the text on top, style and append it
+      const challenge =
+        "<div id='challenge'>30DaysOfJavascript Challenge</div>";
+      wrp.appendChild(document.createElement("div")).innerHTML = challenge;
+      document.getElementById("challenge").style = "text-decoration: underline";
+
+      // create and append the div to show time
+      const time = "<div id='time'></div>";
+      wrp.appendChild(document.createElement("div")).innerHTML = time;
+
+      // time function
+      function startTime() {
+        const today = new Date();
+        let h = today.getHours();
+        let m = today.getMinutes();
+        let s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById("time").innerHTML = h + ":" + m + ":" + s;
+        setTimeout(startTime, 1000);
+      }
+
+      // add zeroes to the time
+      function checkTime(i) {
+        if (i < 10) {
+          i = "0" + i;
+        } // add zero in front of numbers < 10
+        return i;
+      }
+      // set time background
+      const setBg = () => {
+        const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+        document.getElementById(`time`).style.backgroundColor =
+          "#" + randomColor;
+        document.getElementById(`time`).style.margin = "4px auto";
+        document.getElementById(`time`).style.width = "fit-content";
+        setTimeout(setBg, 1000);
+      };
+      // set year background
+      const setYearBg = () => {
+        const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+        document.getElementById(`year`).style.color = "#" + randomColor;
+        document.getElementById(`year`).style.fontSize = "48px";
+        setTimeout(setYearBg, 1000);
+      };
+
+      // const makeUL = (array) => {
+      //   var list = document.createElement("ul");
+
+      //   for (let i = 0; i < array.length; i++) {
+      //     const item = document.createElement("li");
+
+      //     item.appendChild(document.createTextNode(array[i]));
+
+      //     list.appendChild(item);
+      //   }
+      //   return list;
+      // };
+
+      //create dropdown details part of the card
+      const makeDetails = (array) => {
+        // create details menu structure
+        var details = document.createElement("details");
+
+        // create dropdown menu title
+        let summary = document.createElement("summary");
+        summary.appendChild(document.createTextNode(array.topics[0]));
+        details.appendChild(summary);
+
+        // create the items on the dropdown menu and append them
+        for (let i = 1; i < array.topics.length; i++) {
+          const p = document.createElement("p");
+          p.classList.add("para");
+          p.appendChild(document.createTextNode(array.topics[i]));
+
+          details.appendChild(p);
+        }
+        return details;
+      };
+
+      // take the challenges from the object
+      const data = asabenehChallenges2020.challenges;
+
+      // for each challenge create and append dropdown menu
+      data.forEach((element) => {
+        let detailsContainer = document.createElement("div");
+        detailsContainer.classList.add("detailsContainer");
+        detailsContainer.style.display = "flex";
+        detailsContainer.style.padding = "0.5rem";
+        detailsContainer.style.border = "0.1rem solid black";
+        detailsContainer.style.justifyContent = "space-between";
+        detailsContainer.style.alignItems = "center";
+
+        if (element.status === "Done") {
+          detailsContainer.style.background = "#21BF73";
+        } else if (element.status === "Ongoing") {
+          detailsContainer.style.background = "#FDDB3A";
+        } else {
+          detailsContainer.style.background = "#FD5E53";
+        }
+        element.status === "Done" ? "green" : "yellow";
+
+        // create title part
+        var detailsTitle = document.createElement("div");
+        detailsTitle.appendChild(document.createTextNode(element.name));
+        detailsContainer.appendChild(detailsTitle);
+
+        detailsContainer.appendChild(makeDetails(element));
+        wrp.appendChild(detailsContainer);
+
+        let detailsStatus = document.createElement("div");
+        detailsStatus.appendChild(document.createTextNode(element.status));
+        detailsContainer.appendChild(detailsStatus);
+      });
+
+      let paras = document.querySelectorAll(".para");
+      for (let index = 0; index < paras.length; index++) {
+        const element = paras[index];
+      }
+
+      setYearBg();
+      startTime();
+      setBg();
+    </script>
+  </body>
+</html>

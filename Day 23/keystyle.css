@@ -1,0 +1,12 @@
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+#container {
+  padding: 70px 0;
+  border: 3px solid green;
+  text-align: center;
+}
