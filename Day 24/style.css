@@ -1,0 +1,39 @@
+* {
+  font-family: Montserrat;
+  font-size: 25px;
+  padding: 8px;
+}
+
+body {
+  margin: 0 auto;
+  text-align: center;
+  background-image: url("images/galaxy.gif");
+}
+
+.hidden {
+  display: none;
+}
+
+h1 {
+  color: white;
+  font-size: 50px;
+  text-shadow: 1px 1px purple;
+  margin-bottom: 125px;
+}
+button {
+  background-color: gray;
+  color: white;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 200px;
+  color: white;
+}
+.description {
+  color: white;
+}
