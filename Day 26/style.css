@@ -52,16 +52,3 @@ body {
 .card-title {
   margin: auto 0;
 }
-#sort,
-button {
-  padding: 5px;
-  background-color: rgb(143, 48, 143);
-  color: white;
-  border-radius: 4px;
-  border: none;
-  margin: 2px;
-}
-#sort .sort-icon {
-  height: 1rem;
-  width: 1rem;
-}
