@@ -1,0 +1,67 @@
+body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: white;
+}
+
+.header-bg {
+  background-image: url("./images/globe-2.jpg");
+  filter: blur(3px);
+  height: 50vh;
+  background-size: cover;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+#header-container {
+  /* background-size: 1920px 400px; */
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 50vh;
+  position: relative;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding-top: 100px;
+}
+
+#header-title {
+  margin: 0;
+
+  font-size: 40px;
+}
+#card-container {
+  width: 70vw;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  color: black;
+  list-style: none;
+}
+.card {
+  background-image: url("./images/map_image.jpg");
+  background-size: cover;
+  flex: 0 0 10%; /* explanation below */
+  margin: 5px;
+  height: 100px;
+  display: flex;
+  justify-content: space-around;
+}
+.card-title {
+  margin: auto 0;
+}
+#sort,
+button {
+  padding: 5px;
+  background-color: rgb(143, 48, 143);
+  color: white;
+  border-radius: 4px;
+  border: none;
+  margin: 2px;
+}
+#sort .sort-icon {
+  height: 1rem;
+  width: 1rem;
+}
